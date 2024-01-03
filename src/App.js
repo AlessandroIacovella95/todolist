@@ -1,7 +1,8 @@
 import { React, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, removeTodo } from "./features/todos/todosSlice";
+import { addTodo } from "./features/todos/todosSlice";
 import "./App.css";
+import Todos from "./features/Todos";
 
 function App() {
   const todos = useSelector((state) => state.todos);
@@ -40,19 +41,7 @@ function App() {
               </button>
             </div>
           </form>
-          <ul className="list-group">
-            {todos.map((todo) => (
-              <li key={todo.name} className="list-group-item">
-                {todo.name}
-                <button
-                  onClick={() => dispatch(removeTodo(todo))}
-                  className="btn btn-danger btn-sm"
-                >
-                  Elimina
-                </button>
-              </li>
-            ))}
-          </ul>
+          <Todos todos={todos} />
         </div>
       </div>
     </div>
